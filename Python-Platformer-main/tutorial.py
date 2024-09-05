@@ -485,10 +485,11 @@ def main(window):
 
 if __name__ == "__main__":
     main(window)
-#
-# import os
-# import random
-# import math
+# The code below was a template supplied by freeCodeCamp.org
+# Everything else in the project has been added and modified by me
+import os
+import random
+import math
 # import pygame
 # from os import listdir
 # from os.path import isfile, join
@@ -520,7 +521,7 @@ if __name__ == "__main__":
 #         for i in range(sprite_sheet.get_width() // width):
 #             surface = pygame.Surface((width, height), pygame.SRCALPHA, 32)
 #             rect = pygame.Rect(i * width, 0, width, height)
-#             surface.blit(sprite_sheet, (0,0), rect)
+#             surface.blit(sprite_sheet, (0, 0), rect)
 #             sprites.append(pygame.transform.scale2x(surface))
 #
 #         if direction:
@@ -531,19 +532,20 @@ if __name__ == "__main__":
 #
 #     return all_sprites
 #
+#
 # def get_block(size):
 #     path = join("assets", "Terrain", "Terrain.png")
 #     image = pygame.image.load(path).convert_alpha()
 #     surface = pygame.Surface((size, size), pygame.SRCALPHA, 32)
 #     rect = pygame.Rect(96, 0, size, size)
-#     surface.blit(image, (0,0), rect)
+#     surface.blit(image, (0, 0), rect)
 #     return pygame.transform.scale2x(surface)
 #
 #
 # class Player(pygame.sprite.Sprite):
 #     COLOR = (255, 0, 0)
 #     GRAVITY = 1
-#     SPRITES = load_sprite_sheets("MainCharacters", "VirtualGuy", 32, 32, True)
+#     SPRITES = load_sprite_sheets("MainCharacters", "MaskDude", 32, 32, True)
 #     ANIMATION_DELAY = 3
 #
 #     def __init__(self, x, y, width, height):
@@ -572,16 +574,15 @@ if __name__ == "__main__":
 #
 #     def make_hit(self):
 #         self.hit = True
-#         self.hit_count = 0
 #
 #     def move_left(self, vel):
-#         self.x_vel += -vel
+#         self.x_vel = -vel
 #         if self.direction != "left":
 #             self.direction = "left"
 #             self.animation_count = 0
 #
 #     def move_right(self, vel):
-#         self.x_vel += vel
+#         self.x_vel = vel
 #         if self.direction != "right":
 #             self.direction = "right"
 #             self.animation_count = 0
@@ -624,7 +625,8 @@ if __name__ == "__main__":
 #
 #         sprite_sheet_name = sprite_sheet + "_" + self.direction
 #         sprites = self.SPRITES[sprite_sheet_name]
-#         sprite_index = (self.animation_count // self.ANIMATION_DELAY) % len(sprites)
+#         sprite_index = (self.animation_count //
+#                         self.ANIMATION_DELAY) % len(sprites)
 #         self.sprite = sprites[sprite_index]
 #         self.animation_count += 1
 #         self.update()
@@ -677,7 +679,8 @@ if __name__ == "__main__":
 #
 #     def loop(self):
 #         sprites = self.fire[self.animation_name]
-#         sprite_index = (self.animation_count // self.ANIMATION_DELAY) % len(sprites)
+#         sprite_index = (self.animation_count //
+#                         self.ANIMATION_DELAY) % len(sprites)
 #         self.image = sprites[sprite_index]
 #         self.animation_count += 1
 #
@@ -687,59 +690,6 @@ if __name__ == "__main__":
 #         if self.animation_count // self.ANIMATION_DELAY > len(sprites):
 #             self.animation_count = 0
 #
-#
-# class Spike_Head(Object):
-#     ANIMATION_DELAY = 3
-#
-#     def __init__(self, x, y, width, height):
-#         super().__init__(x, y, width, height, "spike_head")
-#         self.spike_head = load_sprite_sheets("Traps", "Spike Head", width, height)
-#         self.image = self.spike_head["Idle"][0]
-#         self.mask = pygame.mask.from_surface(self.image)
-#         self.animation_count = 0
-#         self.animation_name = "Idle"
-#
-#     def Idle(self):
-#         self.animation_name = "Idle"
-#
-#     def loop(self):
-#         sprites = self.spike_head[self.animation_name]
-#         sprite_index = (self.animation_count // self.ANIMATION_DELAY) % len(sprites)
-#         self.image = sprites[sprite_index]
-#         self.animation_count += 1
-#
-#         self.rect = self.image.get_rect(topleft=(self.rect.x, self.rect.y))
-#         self.mask = pygame.mask.from_surface(self.image)
-#
-#         if self.animation_count // self.ANIMATION_DELAY > len(sprites):
-#             self.animation_count = 0
-#
-#
-# class Spikes(Object):
-#     ANIMATION_DELAY = 3
-#
-#     def __init__(self, x, y, width, height):
-#         super().__init__(x, y, width, height, "spikes")
-#         self.spikes = load_sprite_sheets("Traps", "Spikes", width, height)
-#         self.image = self.spikes["Idle"][0]
-#         self.mask = pygame.mask.from_surface(self.image)
-#         self.animation_count = 0
-#         self.animation_name = "Idle"
-#
-#     def Idle(self):
-#         self.animation_name = "Idle"
-#
-#     def loop(self):
-#         sprites = self.spikes[self.animation_name]
-#         sprite_index = (self.animation_count // self.ANIMATION_DELAY) % len(sprites)
-#         self.image = sprites[sprite_index]
-#         self.animation_count += 1
-#
-#         self.rect = self.image.get_rect(topleft=(self.rect.x, self.rect.y))
-#         self.mask = pygame.mask.from_surface(self.image)
-#
-#         if self.animation_count // self.ANIMATION_DELAY > len(sprites):
-#             self.animation_count = 0
 #
 # def get_background(name):
 #     image = pygame.image.load(join("assets", "Background", name))
@@ -790,6 +740,7 @@ if __name__ == "__main__":
 #         if pygame.sprite.collide_mask(player, obj):
 #             collided_object = obj
 #             break
+#
 #     player.move(-dx, 0)
 #     player.update()
 #     return collided_object
@@ -809,102 +760,25 @@ if __name__ == "__main__":
 #
 #     vertical_collide = handle_vertical_collision(player, objects, player.y_vel)
 #     to_check = [collide_left, collide_right, *vertical_collide]
+#
 #     for obj in to_check:
 #         if obj and obj.name == "fire":
 #             player.make_hit()
 #
-#         if obj and obj.name == "spike_head":
-#             player.make_hit()
-#
-#         if obj and obj.name == "spikes":
-#             player.make_hit()
 #
 # def main(window):
 #     clock = pygame.time.Clock()
-#     background, bg_image = get_background("Quality Entertainment - Copy.PNG")
+#     background, bg_image = get_background("Blue.png")
 #
 #     block_size = 96
 #
-#     player = Player(0, 100, 50, 50)
-#
-#     fire1 = Fire(675, HEIGHT - block_size - 64, 16, 32)
-#     fire2 = Fire(1085, HEIGHT - block_size - 64, 16, 32)
-#     fire3 = Fire(1375, HEIGHT - block_size - 64 * 8.5, 16, 32)
-#     fire4 = Fire(3875, HEIGHT - block_size - 64, 16, 32)
-#
-#     fire1.on()
-#     fire2.on()
-#     fire3.on()
-#     fire4.on()
-#
-#     spike_head1 = Spike_Head(1575, HEIGHT - block_size - 64 * 2, 50, 50)
-#     spike_head2 = Spike_Head(1900, HEIGHT - block_size - 64 * 2, 50, 50)
-#     spike_head3 = Spike_Head(1720, HEIGHT - block_size - 64 * 9.2, 50, 50)
-#     spike_head4 = Spike_Head(4500, HEIGHT - block_size - 64 * 4, 50, 50)
-#
-#     spike_head1.Idle()
-#     spike_head2.Idle()
-#     spike_head3.Idle()
-#     spike_head4.Idle()
-#
-#     spikes1 = Spikes(1190, HEIGHT - block_size - 64 * 8, 15, 15)
-#     spikes2 = Spikes(4350, HEIGHT - block_size - 64 * 2, 15, 15)
-#     spikes1.Idle()
-#     spikes2.Idle()
-#
-#
+#     player = Player(100, 100, 50, 50)
+#     fire = Fire(100, HEIGHT - block_size - 64, 16, 32)
+#     fire.on()
 #     floor = [Block(i * block_size, HEIGHT - block_size, block_size)
-#              for i in range(-WIDTH // block_size, (WIDTH * 5) // block_size)]
-#
+#              for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
 #     objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size),
-#                Block(0, HEIGHT - block_size * 3, block_size), fire1,
-#                fire2, fire3, fire4, spike_head1, spike_head2, spike_head3,
-#                spike_head4,
-#                spikes1, spikes2,
-#                Block(block_size * 3, HEIGHT - block_size * 4, block_size),
-#                Block(block_size * 4, HEIGHT - block_size * 4, block_size),
-#                Block(block_size * 5, HEIGHT - block_size * 4, block_size),
-#                Block(block_size * 7, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 8, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 9, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 8, HEIGHT - block_size * 7, block_size),
-#                Block(block_size * 11, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 12, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 13, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 13, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 13, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 15, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 16, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 17, HEIGHT - block_size * 7, block_size),
-#                # Block(block_size * 18, HEIGHT - block_size * 7, block_size), #swapped out for spiked block
-#                Block(block_size * 19, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 20, HEIGHT - block_size * 6, block_size),
-#                Block(block_size * 9, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 9, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 23, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 24, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 24, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 25, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 25, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 25, HEIGHT - block_size * 4, block_size),
-#                Block(block_size * 26, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 26, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 26, HEIGHT - block_size * 4, block_size),
-#                Block(block_size * 26, HEIGHT - block_size * 5, block_size),
-#                Block(block_size * 29, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 30, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 33, HEIGHT - block_size * 5, block_size),
-#                Block(block_size * 33, HEIGHT - block_size * 4, block_size),
-#                Block(block_size * 33, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 33, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 34, HEIGHT - block_size * 4, block_size),
-#                Block(block_size * 34, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 34, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 35, HEIGHT - block_size * 3, block_size),
-#                Block(block_size * 35, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 36, HEIGHT - block_size * 2, block_size),
-#                Block(block_size * 45, HEIGHT - block_size * 2, block_size)
-#                ]
+#                Block(block_size * 3, HEIGHT - block_size * 4, block_size), fire]
 #
 #     offset_x = 0
 #     scroll_area_width = 200
@@ -923,22 +797,12 @@ if __name__ == "__main__":
 #                     player.jump()
 #
 #         player.loop(FPS)
-#         fire1.loop()
-#         fire2.loop()
-#         fire3.loop()
-#         fire4.loop()
-#
-#         spike_head1.loop()
-#         spike_head2.loop()
-#         spike_head3.loop()
-#         spike_head4.loop()
-#
-#         spikes1.loop()
-#         spikes2.loop()
+#         fire.loop()
 #         handle_move(player, objects)
 #         draw(window, background, bg_image, player, objects, offset_x)
 #
-#         if (player.rect.right - offset_x >= WIDTH - scroll_area_width and player.x_vel > 0) or (player.rect.left - offset_x <= scroll_area_width and player.x_vel < 0):
+#         if ((player.rect.right - offset_x >= WIDTH - scroll_area_width) and player.x_vel > 0) or (
+#                 (player.rect.left - offset_x <= scroll_area_width) and player.x_vel < 0):
 #             offset_x += player.x_vel
 #
 #     pygame.quit()
